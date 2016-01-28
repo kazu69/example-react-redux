@@ -1,12 +1,12 @@
-import React from 'react'
-import Task from './Task.jsx'
+import React from 'react';
+import Task from './Task.jsx';
 
-class TaskList extends React.Component {
+export class TaskList extends React.Component {
   constructor(props) {
     super(props);
 
     this.todosNodes = this.todosNodes.bind(this);
-    this._onDeleteTask = this._onDeleteTask.bind(this)
+    this._onDeleteTask = this._onDeleteTask.bind(this);
   };
 
   static propTypes = {
@@ -27,7 +27,7 @@ class TaskList extends React.Component {
 
   _onDeleteTask(id) {
     this.props.onDeleteTask(id);
-  }
+  };
 
   render() {
     return (
@@ -38,4 +38,4 @@ class TaskList extends React.Component {
   };
 }
 
-export default TaskList
+export default TaskList;

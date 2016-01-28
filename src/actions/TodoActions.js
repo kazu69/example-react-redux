@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
-const TodoActions = {
+export const TodoActions = {
   create: (task) => {
     AppDispatcher.dispatch({
       actionType: 'TODO_CREATE',

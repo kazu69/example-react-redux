@@ -1,17 +1,17 @@
 import React from 'react';
 import TodoActions from '../../../actions/TodoActions';
 
-class Task extends React.Component {
+export class Task extends React.Component {
   constructor(props) {
     super(props);
     this._onChecked = this._onChecked.bind(this);
-  }
+  };
 
   _onChecked(id, event) {
     event.preventDefault();
     if(!event.target.checked) { return; }
     TodoActions.destroy(id);
-  }
+  };
 
   render() {
     return(
@@ -20,7 +20,7 @@ class Task extends React.Component {
         {this.props.todo.task}
       </li>
     );
-  }
+  };
 }
 
-export default Task
+export default Task;

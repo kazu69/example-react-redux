@@ -1,8 +1,8 @@
-import React from 'react'
-import TaskForm from './TaskForm.jsx'
-import TaskList from './TaskList.jsx'
-import TodoActions from '../../../actions/TodoActions'
-import TodoStore from '../../../stores/TodoStore'
+import React from 'react';
+import TaskForm from './TaskForm.jsx';
+import TaskList from './TaskList.jsx';
+import TodoActions from '../../../actions/TodoActions';
+import TodoStore from '../../../stores/TodoStore';
 
 class TaskBox extends React.Component {
 
@@ -64,4 +64,4 @@ class TaskBox extends React.Component {
   };
 }
 
-export default TaskBox
+export default TaskBox;

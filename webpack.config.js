@@ -3,16 +3,16 @@
 const path = require('path'),
       saveLicense = require('uglify-save-license'),
       webpack = require('webpack'),
-      htmlWebpackPlugin = require('html-webpack-plugin');
-const htmlminifier = JSON.parse(require('fs').readFileSync(__dirname + '/.htmlminifier'));
+      htmlWebpackPlugin = require('html-webpack-plugin'),
+      htmlminifier = JSON.parse(require('fs').readFileSync(__dirname + '/.htmlminifier'));
 
 module.exports = {
   entry: {
-    js: ['./src/jsx/main.jsx']
+    js: ['./src/index.jsx']
   },
   output: {
     path: __dirname + '/public/javascripts',
-    filename: 'main.js'
+    filename: 'index.js'
   },
   module: {
     loaders: [
@@ -20,7 +20,7 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['react', 'es2015', 'stage-1']
         }
       }
     ]

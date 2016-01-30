@@ -6,7 +6,6 @@ export class TaskList extends React.Component {
     super(props);
 
     this.todosNodes = this.todosNodes.bind(this);
-    this._onDeleteTask = this._onDeleteTask.bind(this);
   };
 
   static propTypes = {
@@ -17,22 +16,23 @@ export class TaskList extends React.Component {
     todos: []
   };
 
-  todosNodes(todos) {
+  todosNodes() {
+    const { todos, completeTodo, deleteTodo } = this.props;
     return todos.map((todo) => {
       return(
-        <Task todo={todo} onDeleteTask={this._onDeleteTask} />
+        <Task
+          todo={todo}
+          key={todo.id}
+          completeTodo={completeTodo}
+          deleteTodo={deleteTodo} />
       );
     });
   };
 
-  _onDeleteTask(id) {
-    this.props.onDeleteTask(id);
-  };
-
   render() {
     return (
-        <ul className="todos">
-          {this.todosNodes(this.props.todos)}
+        <ul className="todos__list">
+          {this.todosNodes()}
         </ul>
     );
   };

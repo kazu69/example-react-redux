@@ -1,0 +1,126 @@
+body {
+  background-color: #efefef;
+}
+
+.app {
+  width: 40%;
+  margin: 10% auto;
+  padding: .8em 1.6em;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: .3em;
+}
+
+.todos__title {
+  margin: 0 auto .4em;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee,
+               0 2px 0 #ddd,
+               0 3px 0 #ccc,
+               0 4px 0 #bbb,
+               0 5px 0 #aaa,
+               0 6px 0 #999,
+               0 7px 0 #888,
+               0 8px 7px #777,
+               0 -1px 1px #eee;
+  color: #fff;
+  font-size: 4em;
+}
+
+.todos__form .input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .8em .4em;
+  border-radius: .3em;
+  border: 1px solid #eee;
+  font-size: 1em;
+  color: #999;
+  outline: 0;
+}
+
+.todos__form .input:focus {
+    background-color: #ecf8ff;
+}
+
+.todos__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.todos__list .item {
+  padding: .6em .4em;
+  border-bottom: 1px dotted #f3f3f3;
+  color: #999;
+  position: relative;
+}
+
+.todos__list .item:hover {
+  color: #333;
+}
+
+.todos__list .item:first-child {
+  border-top: 1px dotted #f3f3f3;
+}
+
+.item__label {
+  padding-left: .2em;
+  padding-right: .2em;
+}
+
+.button {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+}
+
+.button span {
+  display: inline-block;
+}
+
+.todos__list .button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+}
+
+.todos__list .item:hover .button {
+  display: block;
+}
+
+.todos__list .button:after {
+  font-size: 3em;
+  content: '×';
+  margin-right: .2em;
+  color: #e99;
+}
+
+.todos__list .button span {
+  width: 20px;
+  height: 20px;
+  text-indent: 100%;
+}
+
+.todos__footer {
+  position: relative;
+  display: block;
+  min-height: 30px;
+}
+
+.clear-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #dbb;
+  border-radius: .3em;
+  padding: .2em .6em;
+  color: #c22;
+  outline: 0;
+}

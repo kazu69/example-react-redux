@@ -1,18 +1,20 @@
 {
-  "name": "react-todos",
+  "name": "react-redux-todos",
   "version": "0.0.1",
-  "description": "",
+  "description": "example React + redux todos.",
   "main": "index.js",
   "scripts": {
     "prebuild": "mkdir -p public/javascripts && mkdir -p public/stylesheets && mkdir -p src/js",
-    "babelify": "$(npm bin)/browserify -t [ babelify --presets [ es2015 react stage-1 ] ] -p licensify ./src/jsx/main.jsx -d -o ./src/js/bundle.js",
-    "start": "$(npm bin)/beefy src/jsx/main.jsx:javascripts/main.js --live --open --cwd public -- -t [ babelify --presets [ es2015 react stage-1 ] ]",
+    "babelify": "$(npm bin)/browserify -t [ babelify --presets [ es2015 react stage-1 ] ] -p licensify ./src/index.jsx -d -o ./src/js/bundle.js",
+    "beefy": "$(npm bin)/beefy src/index.jsx:javascripts/index.js --live --open --cwd public --index public/index.html -- -t [ babelify --presets [ es2015 react stage-1 ] ]",
     "minify:html": "$(npm bin)/html-minifier -c .htmlminifier src/index.html -o public/index.html",
-    "minify:js": "$(npm bin)/uglifyjs src/js/bundle.js -o public/javascripts/main.js",
-    "minify:css": "$(npm bin)/cleancss -o public/stylesheets/app.css src/css/app.css",
+    "minify:js": "$(npm bin)/uglifyjs src/js/bundle.js -o public/javascripts/index.js",
+    "minify:css": "$(npm bin)/cleancss -o public/stylesheets/app.css src/stylesheets/app.css",
+    "order:css": "$(npm bin)/cssdeclsort --order smacss public/stylesheets/*.css",
     "clean": "rm -rf public/javascripts/* && rm -rf public/stylesheets/* && rm -rf public/index.html && rm -rf src/js",
     "webpack": "$(npm bin)/webpack --config webpack.config.js",
-    "build": "npm run prebuild && npm run minify:css && npm run minify:html && npm run webpack && npm run minify:js && rm -rf src/js"
+    "build": "npm run prebuild && npm run minify:css && npm run order:css && npm run minify:html && npm run babelify && npm run minify:js && rm -rf src/js",
+    "start": "npm run minify:css && npm run order:css && npm run minify:html && npm run beefy"
   },
   "author": "kazu69",
   "license": "MIT",
@@ -20,7 +22,9 @@
     "flux": "^2.1.1",
     "object-assign": "^4.0.1",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "react-redux": "^4.0.6",
+    "redux": "^3.0.6"
   },
   "devDependencies": {
     "babel-loader": "^6.2.1",
@@ -30,9 +34,12 @@
     "babelify": "^7.2.0",
     "beefy": "^2.1.5",
     "browserify": "^13.0.0",
+    "clean-css": "^3.4.9",
+    "css-declaration-sorter": "^1.1.0",
     "html-minifier": "^1.1.1",
     "html-webpack-plugin": "^1.7.0",
     "licensify": "^2.1.0",
+    "redux-devtools": "^3.0.1",
     "uglify-save-license": "^0.4.1",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"

@@ -1,3 +1,5 @@
+import objectAssign from 'object-assign';
+
 const initialState = [
   {id: 1, task: 'Eat lunch', complete: true },
   {id: 2, task: 'Buy milk', complete: false }
@@ -6,36 +8,36 @@ const initialState = [
 export default function todos(state = initialState, action) {
   switch(action.type) {
     case 'TODO_CREATE':
-      const id = Date.now();
-      return [
-        ...state,
-        {
-          id: id,
-          task: action.task.trim()
-        }
-      ];
-      break;
+      let updata = objectAssign([], state)
+      updata.push({
+        id: state.length + 1,
+        task: action.task.trim(),
+        complete: false
+      });
+
+      return updata;
 
     case 'TODO_DELETE':
-      return state.filter( todo =>
+      updata = objectAssign([], state.filter( todo => {
         todo.id !== action.id
-      );
-      break;
+      }));
+      return updata;
 
     case 'TODO_COMPLETE':
-      return state.filter( todo => {
+      updata = objectAssign([], state.filter( todo => {
         if(todo.id == action.id) {
           todo.complete = !todo.complete;
         }
         return todo;
-      });
-      break;
+      }));
+
+      return updata;
 
     case 'CLEAR_COMPLETED':
-      return state.filter( todo => {
+      updata = objectAssign([], state.filter( todo => {
         if(!todo.complete) return todo;
-      });
-      break;
+      }));
+      return updata;
 
     default:
       return state;
